@@ -4,12 +4,15 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
+
 import com.aldeadavila.jetpackcomposebasics.ui.theme.JetpackComposeBasicsTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -32,11 +35,14 @@ class MainActivity2 : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+fun Greeting(name: String,
+          viewModel: UserViewModel = hiltViewModel(),
+             modifier: Modifier = Modifier) {
+    Button(onClick = {
+       viewModel.getUser()
+    }) {
+
+    }
 }
 
 @Preview(showBackground = true)
